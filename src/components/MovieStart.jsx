@@ -10,7 +10,7 @@ const MovieStart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = '4dcc21464991fe06bb4ceb635c4a803b'; // Votre clé API TMDb
+        const apiKey = '4dcc21464991fe06bb4ceb635c4a803b';
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
         const data = await response.json();
         setMovies(data.results);

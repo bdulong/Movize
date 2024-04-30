@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 
-const MovieAPIComponent = () => {
+const MovieStart = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,23 +34,25 @@ const MovieAPIComponent = () => {
   }
 
   return (
-    <div>
+  <div>
       <h1>Films populaires</h1>
       <div className="movies-list">
         {movies.map(movie => (
-          <div key={movie.id} className="movie-item">
-            {movie.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={`Affiche de ${movie.title}`}
-              />
-            )}
-            <h2>{movie.title}</h2>
-          </div>
+          <Link to={`/movie/${movie.id}`} key={movie.id}>
+            <div className="movie-item">
+              {movie.poster_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={`Affiche de ${movie.title}`}
+                />
+              )}
+              <h2>{movie.title}</h2>
+            </div>
+          </Link>
         ))}
       </div>
-    </div>
+  </div>
   );
 };
 
-export default MovieAPIComponent;
+export default MovieStart;

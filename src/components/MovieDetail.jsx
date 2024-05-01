@@ -59,18 +59,18 @@ const MovieDetail = () => {
     }, [id]);
 
     useEffect(() => {
-        setVisibleCredits(credits.slice(0, 6));
+        setVisibleCredits(credits.slice(0, 4));
     }, [credits]);
 
     const handleShowAllCredits = () => {
-        const limitedCredits = credits.slice(0, 17);
+        const limitedCredits = credits.slice(0, 19);
         setVisibleCredits(limitedCredits);
         setShowAllCredits(true);
     };
     
 
     const handleCloseAllCredits = () => {
-        setVisibleCredits(credits.slice(0, 6));
+        setVisibleCredits(credits.slice(0, 4));
         setShowAllCredits(false);
     };
 
@@ -83,40 +83,48 @@ const MovieDetail = () => {
     }
 
     return (
-        <div>
-            <Header />
-            <div className='content'>
-                <div className="movie-detail-container">
-                    <h1>{movie.title}</h1>
-                    {posterPath && <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={movie.title} />}
-                    <p><strong>Catégorie:</strong> {movie.genres.join(', ')}</p>
-                    <p><strong>Pays d'origine:</strong> {movie.production_countries.join(', ')}</p>
-                    <p><strong>Durée:</strong> {movie.runtime}</p>
-                    <p>{movie.overview}</p>
-                    <h2>Crédits</h2>
-                    <div className="credits-carousel">
-                        {visibleCredits.map(credit => (
-                            <div key={credit.id}>
-                                <img src={credit.profile_path ? `https://image.tmdb.org/t/p/w200/${credit.profile_path}` : defaultProfileImage} alt={credit.name} />
-                                <p><strong>{credit.name}</strong></p>
-                                <p>{credit.character}</p>
-                            </div>
-                        ))}
-                        {!showAllCredits && <button onClick={handleShowAllCredits}>Voir tous les crédits</button>}
-                        {showAllCredits && <button onClick={handleCloseAllCredits}>Fermer les crédits</button>}
-                    </div>
-                    <h2>Avis</h2>
-                    <ul>
-                        {reviews.map(review => (
-                            <li key={review.id}>
-                                <p><strong>{review.author}</strong></p>
-                                <p>{review.content}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+<div>
+  <Header />
+  <div className='content'>
+    <div className="movie-detail-container">
+      <div className="movie-poster">
+        {posterPath && <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={movie.title} />}
+      </div>
+      <div className="movie-details">
+        <h1>{movie.title}</h1>
+        <p>{movie.overview}</p>
+        <p><strong>Pays d'origine:</strong> {movie.production_countries.join(', ')}</p>
+        <p><strong>Durée:</strong> {movie.runtime}</p>
+        <p><strong>Catégorie:</strong> {movie.genres.join(', ')}</p>
+        {movie.release_date && (
+          <p><strong>Année de sortie:</strong> {new Date(movie.release_date).getFullYear()}</p>
+        )}
+      </div>
+    </div>
+    <h2>Acteurs</h2>
+    <div className="credits-carousel">
+      {visibleCredits.map(credit => (
+        <div key={credit.id}>
+          <img src={credit.profile_path ? `https://image.tmdb.org/t/p/w200/${credit.profile_path}` : defaultProfileImage} alt={credit.name} />
+          <p><strong>{credit.name}</strong></p>
+          <p>{credit.character}</p>
         </div>
+      ))}
+      {!showAllCredits && <button onClick={handleShowAllCredits}>Voir tous les acteurs</button>}
+      {showAllCredits && <button onClick={handleCloseAllCredits}>Réduire</button>}
+    </div>
+    <h2>Avis</h2>
+    <ul>
+      {reviews.map(review => (
+        <li key={review.id}>
+          <p><strong>{review.author}</strong></p>
+          <p>{review.content}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
     );
 };
 

@@ -8,31 +8,65 @@ body {
 }
 
 h1 {
-  color: #fff;
+  color: #abc;
+  margin: 0;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin: 0 0 20px 0;
+}
+
+input {
+  height: 32px;
+  width: 60%;
+  border-radius: 10px;
+  border-color: #abc;
+  background-color: #abc;
+}
+
+input::placeholder {
+  text-align: center;
+  color: black;
+  font-size: 16px;
 }
 
 h2 {
   color: #abc;
 }
 
+h4 {
+  color: #abc;
+  margin: 0;
+}
+
 p {
   color: #abc;
+  margin: 0;
 }
 
 .content {
-  margin: 0 120px;
+  margin: 40px 400px 0px 400px;
+}
+
+.separator {
+  height: 1px;
+  background-color: #abc;
+  margin: 5px 0px 10px 0px;
 }
 
 /* Header */
 
 header {
-  background-color: #FF8C42;
+  background-color: #abc;
   width: 100%;
   height: 70px;
 }
 
 nav {
-  padding: 10px 120px;
+  padding: 10px 400px;
 }
 
 /* MovieStart */
@@ -44,9 +78,7 @@ nav {
 }
 
 .movie-item {
-  background-color: #f9f9f9;
   border-radius: 5px;
-  padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,19 +97,35 @@ nav {
 /* MovieDetail */
 
 .movie-detail-container {
+  display: flex;
+  align-items: flex-start;
   max-width: 100%;
   margin: 0 auto;
   padding: 20px;
 }
 
+.movie-poster {
+  margin-right: 20px; /* Espace entre l'affiche et les détails */
+}
+
+.movie-poster img {
+  max-width: 100%; /* Pour que l'image s'adapte à la taille de son conteneur */
+}
+
+/* Pour assurer que les détails occupent tout l'espace disponible */
+.movie-details {
+  flex-grow: 1;
+}
+
+.movie-details p {
+  margin: 0 0 10px 0;
+}
+
+
 .movie-detail-container img {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
-}
-
-.movie-detail-container p {
-  margin: 0; /* Retirer la marge des éléments <p> */
 }
 
 .movie-detail-container .credit-item {

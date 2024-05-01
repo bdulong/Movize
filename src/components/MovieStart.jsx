@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from './header.jsx';
 import '../App.css';
 
 const MovieStart = () => {
@@ -37,7 +38,9 @@ const MovieStart = () => {
   }
 
   return (
-  <div>
+    <div>
+      <Header />
+      <div className='content'>
       <h1>Films populaires</h1>
       <div className="movies-list">
         {movies.map(movie => (
@@ -53,6 +56,7 @@ const MovieStart = () => {
             </div>
           </Link>
         ))}
+      </div>
       </div>
   </div>
   );

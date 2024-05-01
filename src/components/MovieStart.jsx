@@ -11,9 +11,12 @@ const MovieStart = () => {
     const fetchData = async () => {
       try {
         const apiKey = '4dcc21464991fe06bb4ceb635c4a803b';
+        // const language = 'fr';
+
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
         const data = await response.json();
         setMovies(data.results);
+        
         setIsLoading(false);
       } catch (error) {
         console.error('Erreur lors de la récupération des données : ', error);

@@ -102,7 +102,7 @@ const MovieStart = () => {
 </div>
 
         <div>
-          <h4>Films populaires</h4>
+          <h4>Films populaires cette semaine</h4>
           <div className="separator"></div>
           <div className="movies-list">
             {popularMovies.map(movie => (

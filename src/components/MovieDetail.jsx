@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from './header.jsx';
 import '../App.css';
 import defaultProfileImage from '../images/default-profile-image.jpg';
+import defaultReviewImage from '../images/default-review-image.jpg';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -101,7 +102,8 @@ const MovieDetail = () => {
         )}
       </div>
     </div>
-    <h2>Acteurs</h2>
+    <h2 className='reviews-h2'>Acteurs</h2>
+    <div className="separator"></div>
     <div className="credits-carousel">
       {visibleCredits.map(credit => (
         <div key={credit.id}>
@@ -110,18 +112,25 @@ const MovieDetail = () => {
           <p>{credit.character}</p>
         </div>
       ))}
-      {!showAllCredits && <button onClick={handleShowAllCredits}>Voir tous les acteurs</button>}
-      {showAllCredits && <button onClick={handleCloseAllCredits}>Réduire</button>}
+      {!showAllCredits && <button className='button-credits' onClick={handleShowAllCredits}>Voir tous les acteurs</button>}
+      {showAllCredits && <button className='button-credits' onClick={handleCloseAllCredits}>Réduire</button>}
     </div>
-    <h2>Avis</h2>
-    <ul>
-      {reviews.map(review => (
-        <li key={review.id}>
-          <p><strong>{review.author}</strong></p>
-          <p>{review.content}</p>
-        </li>
-      ))}
-    </ul>
+    <div className="reviews-container">
+  <h2 className='reviews-h2'>Avis de la rédaction</h2>
+  <div className="separator"></div>
+  <ul>
+    {reviews.map(review => (
+      <div className='reviews' key={review.id}>
+          <img className='review-avatar' src={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w200/${review.author_details.avatar_path}` : defaultReviewImage} alt={review.author} />
+          <div className='content-review'>
+            <p><strong>{review.author}</strong></p>
+            <p>{review.content}</p>
+          </div>
+      </div>
+    ))}
+  </ul>
+</div>
+
   </div>
 </div>
 

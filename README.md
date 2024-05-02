@@ -2,6 +2,8 @@
 
 Movize est un projet d'encyclopédie de films développé en React utilisant l'API de The Movie Database (TMDb). Ce projet permet aux utilisateurs de rechercher des films, consulter des détails sur chaque film et découvrir de nouveaux films à travers différentes fonctionnalités.
 
+Movize utilise React Router pour la navigation entre les différentes pages de l'application. Les routes sont configurées dans le composant `App.jsx` et permettent aux utilisateurs de naviguer de manière fluide entre la page d'accueil, la page de recherche et les détails des films.
+
 ## Installation
 
 Pour installer et exécuter Movize localement sur votre machine, suivez ces étapes :
@@ -35,7 +37,3 @@ Pour installer et exécuter Movize localement sur votre machine, suivez ces éta
    ```
    http://localhost:3000
    ```
-
-#### Utilisation de React Router
-
-Movize utilise React Router pour la navigation entre les différentes pages de l'application. Les routes sont configurées dans le composant `App.js` et permettent aux utilisateurs de naviguer de manière fluide entre la page d'accueil, la page de recherche et les détails des films.

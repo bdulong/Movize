@@ -7,14 +7,34 @@ Movize est un projet d'encyclopédie de films développé en React utilisant l'A
 Pour installer et exécuter Movize localement sur votre machine, suivez ces étapes :
 
 1. Clonez le dépôt GitHub de Movize en utilisant la commande suivante :
-git clone https://github.com/votre-utilisateur/movize.git
-2. Accédez au répertoire Movize dans le terminal
+   
+   ```
+   git clone https://github.com/votre-utilisateur/movize.git
+   ```
+
+2. Accédez au répertoire Movize en utilisant la commande :
+   
+   ```
+   cd movize
+   ```
+
 3. Installez les dépendances en exécutant la commande suivante :
-npm install
+   
+   ```
+   npm install
+   ```
+
 4. Lancez l'application en utilisant la commande :
-npm start
+   
+   ```
+   npm start
+   ```
+
 5. Ouvrez votre navigateur Web et accédez à l'URL suivante :
-http://localhost:3000
+   
+   ```
+   http://localhost:3000
+   ```
 
 #### Utilisation de React Router
 

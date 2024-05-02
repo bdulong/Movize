@@ -85,22 +85,21 @@ const MovieStart = () => {
         <div className='searchbar'>
           <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder='Trouvez un film'/>
         </div>
-  <div className="movies-list">
-    {searchResults.slice(0, 5).map(movie => (
-      <Link to={`/movie/${movie.id}`} key={movie.id}>
-        <div className="movie-item">
-          {movie.poster_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={`Affiche de ${movie.title}`}
-            />
-          )}
+        <div className="movies-list">
+          {searchResults.slice(0, 5).map(movie => (
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <div className="movie-item">
+                {movie.poster_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={`Affiche de ${movie.title}`}
+                  />
+                )}
+              </div>
+            </Link>
+          ))}
         </div>
-      </Link>
-    ))}
-  </div>
-</div>
-
+      </div>
         <div>
           <h4>Films populaires cette semaine</h4>
           <div className="separator"></div>

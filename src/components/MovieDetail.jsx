@@ -82,11 +82,11 @@ const MovieDetail = () => {
     };
 
     if (isLoading) {
-        return <div>Chargement des données...</div>;
+        return <div className='error-style'>Chargement des données...</div>;
     }
 
     if (error) {
-        return <div>Une erreur s'est produite : {error.message}</div>;
+        return <div className='error-style'>Une erreur s'est produite : {error.message}</div>;
     }
 
     return (
@@ -137,14 +137,14 @@ const MovieDetail = () => {
                     </ul>
                 </div>
                 <div>
-                  <h2 className='reviews-h2'>Films similaires</h2>
-                  <div className="separator"></div>
-                  <div className="movies-list">
-                    {similarMovies.map(similarMovie => (
-                      <Link key={similarMovie.id} to={`/movie/${similarMovie.id}`}>
-                        <div className='movie-item'><img src={`https://image.tmdb.org/t/p/w200/${similarMovie.poster_path}`} alt={similarMovie.title} /></div>
-                      </Link>))}
-                  </div>
+                    <h2 className='reviews-h2'>Films similaires</h2>
+                    <div className="separator"></div>
+                    <div className="movies-list">
+                        {similarMovies.map(similarMovie => (
+                            <Link key={similarMovie.id} to={`/movie/${similarMovie.id}`}>
+                            <div className='movie-item-similar'><img src={`https://image.tmdb.org/t/p/w200/${similarMovie.poster_path}`} alt={similarMovie.title} /></div>
+                        </Link>))}
+                    </div>
                 </div>
             </div>
         </div>

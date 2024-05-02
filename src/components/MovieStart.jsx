@@ -10,7 +10,8 @@ const MovieStart = () => {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [randomMovie, setRandomMovie] = useState(null); // Ajout de l'état pour le film aléatoire
+  const [randomMovie, setRandomMovie] = useState(null);
+  const [hoveredMovie, setHoveredMovie] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +42,7 @@ const MovieStart = () => {
 
         setPopularMovies(popularMovies);
         setUpcomingMovies(upcomingMovies);
-        setRandomMovie(randomMovie); // Définir le film aléatoire
+        setRandomMovie(randomMovie);
         setIsLoading(false);
       } catch (error) {
         console.error('Erreur lors de la récupération des données : ', error);
@@ -77,12 +78,20 @@ const MovieStart = () => {
     setSearchQuery(event.target.value);
   };
 
+  const handleMouseEnter = (movie) => {
+    setHoveredMovie(movie);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredMovie(null);
+  };
+
   if (isLoading) {
-    return <div>Chargement des données...</div>;
+    return <div className='error-style'>Chargement des données...</div>;
   }
 
   if (error) {
-    return <div>Une erreur s'est produite : {error.message}</div>;
+    return <div className='error-style'>Une erreur s'est produite : {error.message}</div>;
   }
 
   return (
@@ -96,8 +105,16 @@ const MovieStart = () => {
           <div className="movies-list">
             {searchResults.slice(0, 5).map(movie => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
-                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
-            </Link>
+                <div className="movie-item" onMouseEnter={() => handleMouseEnter(movie)} onMouseLeave={handleMouseLeave}>
+                  {movie.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>}
+                  {hoveredMovie && hoveredMovie.id === movie.id && (
+                    <div className="movie-info">
+                      <h2>{movie.title}</h2>
+                      <p>{movie.overview}</p>
+                    </div>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -107,7 +124,15 @@ const MovieStart = () => {
           <div className="movies-list">
             {popularMovies.map(movie => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
-                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
+                <div className="movie-item" onMouseEnter={() => handleMouseEnter(movie)} onMouseLeave={handleMouseLeave}>
+                  {movie.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>}
+                  {hoveredMovie && hoveredMovie.id === movie.id && (
+                    <div className="movie-info">
+                      <h2>{movie.title}</h2>
+                      <p>{movie.overview}</p>
+                    </div>
+                  )}
+                </div>
               </Link>
             ))}
           </div>
@@ -133,7 +158,15 @@ const MovieStart = () => {
           <div className="movies-list">
             {upcomingMovies.map(movie => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
-                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
+                <div className="movie-item" onMouseEnter={() => handleMouseEnter(movie)} onMouseLeave={handleMouseLeave}>
+                  {movie.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>}
+                  {hoveredMovie && hoveredMovie.id === movie.id && (
+                    <div className="movie-info">
+                      <h2>{movie.title}</h2>
+                      <p>{movie.overview}</p>
+                    </div>
+                  )}
+                </div>
               </Link>
             ))}
           </div>

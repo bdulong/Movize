@@ -17,7 +17,7 @@ const MovieStart = () => {
         const apiKey = '4dcc21464991fe06bb4ceb635c4a803b';
 
         // Récupérer les films populaires
-        const popularResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR`);
+        const popularResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr`);
         const popularData = await popularResponse.json();
         let popularMovies = popularData.results;
 
@@ -25,7 +25,7 @@ const MovieStart = () => {
         popularMovies = popularMovies.slice(0, 10);
 
         // Récupérer les films à venir
-        const upcomingResponse = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=fr-FR`);
+        const upcomingResponse = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=fr`);
         const upcomingData = await upcomingResponse.json();
         let upcomingMovies = upcomingData.results;
 
@@ -81,39 +81,25 @@ const MovieStart = () => {
     <div>
       <Header />
       <div className='content'>
-      <div>
-        <div className='searchbar'>
-          <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder='Trouvez un film'/>
-        </div>
-        <div className="movies-list">
-          {searchResults.slice(0, 5).map(movie => (
-            <Link to={`/movie/${movie.id}`} key={movie.id}>
-              <div className="movie-item">
-                {movie.poster_path && (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={`Affiche de ${movie.title}`}
-                  />
-                )}
-              </div>
+        <div>
+          <div className='searchbar'>
+            <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder='Trouvez un film'/>
+          </div>
+          <div className="movies-list">
+            {searchResults.slice(0, 5).map(movie => (
+              <Link to={`/movie/${movie.id}`} key={movie.id}>
+                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
             </Link>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
         <div>
           <h4>Films populaires cette semaine</h4>
           <div className="separator"></div>
           <div className="movies-list">
             {popularMovies.map(movie => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
-                <div className="movie-item">
-                  {movie.poster_path && (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={`Affiche de ${movie.title}`}
-                    />
-                  )}
-                </div>
+                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
               </Link>
             ))}
           </div>
@@ -124,21 +110,13 @@ const MovieStart = () => {
           <div className="movies-list">
             {upcomingMovies.map(movie => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
-                <div className="movie-item">
-                  {movie.poster_path && (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={`Affiche de ${movie.title}`}
-                    />
-                  )}
-                </div>
+                <div className="movie-item">{movie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche de ${movie.title}`}/>)}</div>
               </Link>
             ))}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )};
 
 export default MovieStart;

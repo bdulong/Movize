@@ -20,19 +20,18 @@ const MovieDetail = () => {
         const fetchData = async () => {
             try {
                 const apiKey = '4dcc21464991fe06bb4ceb635c4a803b';
-                const language = 'fr';
 
                 const urls = [
-                    `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=${language}`, // Movie details
+                    `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=fr`, // Movie details
                     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}`, // Movie reviews
-                    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`, // Movie credits
-                    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${apiKey}` // Movie images
+                    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=fr`, // Movie credits
+                    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${apiKey}&language=en` // Movie images
                 ];
 
                 const allResponses = await Promise.all(urls.map(url => fetch(url)));
                 const [movieData, reviewsData, creditsData, posterData] = await Promise.all(allResponses.map(response => response.json()));
 
-                // Extracting additional movie details
+                // Prends les infos de Movie details
                 const { production_countries, genres, runtime } = movieData;
 
                 setMovie({
@@ -116,25 +115,22 @@ const MovieDetail = () => {
       {showAllCredits && <button className='button-credits' onClick={handleCloseAllCredits}>Réduire</button>}
     </div>
     <div className="reviews-container">
-  <h2 className='reviews-h2'>Avis de la rédaction</h2>
-  <div className="separator"></div>
-  <ul>
-    {reviews.map(review => (
-      <div className='reviews' key={review.id}>
-          <img className='review-avatar' src={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w200/${review.author_details.avatar_path}` : defaultReviewImage} alt={review.author} />
-          <div className='content-review'>
-            <p><strong>{review.author}</strong></p>
-            <p>{review.content}</p>
+      <h2 className='reviews-h2'>Avis de la rédaction</h2>
+      <div className="separator"></div>
+      <ul>
+        {reviews.map(review => (
+          <div className='reviews' key={review.id}>
+              <img className='review-avatar' src={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w200/${review.author_details.avatar_path}` : defaultReviewImage} alt={review.author} />
+              <div className='content-review'>
+                <p><strong>{review.author}</strong></p>
+                <p>{review.content}</p>
+              </div>
           </div>
-      </div>
-    ))}
-  </ul>
-</div>
-
+        ))}
+      </ul>
+    </div>
   </div>
 </div>
-
-    );
-};
+)};
 
 export default MovieDetail;

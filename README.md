@@ -11,7 +11,7 @@ Pour installer et exécuter Movize localement sur votre machine, suivez ces éta
 1. Clonez le dépôt GitHub de Movize en utilisant la commande suivante :
    
    ```
-   git clone https://github.com/votre-utilisateur/movize.git
+   git clone https://github.com/bdulong/movize.git
    ```
 
 2. Accédez au répertoire Movize en utilisant la commande :

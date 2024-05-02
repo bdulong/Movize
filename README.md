@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Movize
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movize est un projet d'encyclopédie de films développé en React utilisant l'API de The Movie Database (TMDb). Ce projet permet aux utilisateurs de rechercher des films, consulter des détails sur chaque film et découvrir de nouveaux films à travers différentes fonctionnalités.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Pour installer et exécuter Movize localement sur votre machine, suivez ces étapes :
 
-### `npm start`
+1. Clonez le dépôt GitHub de Movize en utilisant la commande suivante :
+git clone https://github.com/votre-utilisateur/movize.git
+2. Accédez au répertoire Movize dans le terminal
+3. Installez les dépendances en exécutant la commande suivante :
+npm install
+4. Lancez l'application en utilisant la commande :
+npm start
+5. Ouvrez votre navigateur Web et accédez à l'URL suivante :
+http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Utilisation de React Router
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Movize utilise React Router pour la navigation entre les différentes pages de l'application. Les routes sont configurées dans le composant `App.js` et permettent aux utilisateurs de naviguer de manière fluide entre la page d'accueil, la page de recherche et les détails des films.

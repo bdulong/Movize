@@ -10,30 +10,38 @@ const MovieStart = () => {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [randomMovie, setRandomMovie] = useState(null); // Ajout de l'état pour le film aléatoire
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const apiKey = '4dcc21464991fe06bb4ceb635c4a803b';
 
-        // Récupérer les films populaires
+        // Récupérer films populaires
         const popularResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr`);
         const popularData = await popularResponse.json();
         let popularMovies = popularData.results;
 
-        // Limiter les films populaires à 10
+        // Limiter films populaires à 10
         popularMovies = popularMovies.slice(0, 10);
 
-        // Récupérer les films à venir
+        // Récupérer films à venir
         const upcomingResponse = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=fr`);
         const upcomingData = await upcomingResponse.json();
         let upcomingMovies = upcomingData.results;
 
-        // Limiter les films à venir à 10
+        // Limiter films à venir à 10
         upcomingMovies = upcomingMovies.slice(0, 10);
+
+        // Récupérer un film aléatoire
+        const randomResponse = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr`);
+        const randomData = await randomResponse.json();
+        const randomIndex = Math.floor(Math.random() * randomData.results.length);
+        const randomMovie = randomData.results[randomIndex];
 
         setPopularMovies(popularMovies);
         setUpcomingMovies(upcomingMovies);
+        setRandomMovie(randomMovie); // Définir le film aléatoire
         setIsLoading(false);
       } catch (error) {
         console.error('Erreur lors de la récupération des données : ', error);
@@ -104,6 +112,18 @@ const MovieStart = () => {
             ))}
           </div>
         </div>
+        {randomMovie && (
+            <div>
+              <h4>Notre sélection de la soirée</h4>
+              <div className="separator"></div>
+              <div className="random-movie">
+                <Link to={`/movie/${randomMovie.id}`}>
+                  {randomMovie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`} alt={`Affiche de ${randomMovie.title}`} />)}
+                </Link>
+                  <p>{randomMovie.overview}</p>
+              </div>
+            </div>
+          )}
         <div>
           <h4>Films à venir</h4>
           <div className="separator"></div>
@@ -117,6 +137,7 @@ const MovieStart = () => {
         </div>
       </div>
     </div>
-  )};
+  );
+};
 
 export default MovieStart;

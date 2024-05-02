@@ -15,26 +15,31 @@ h1 {
 .searchbar {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   margin: 0 0 20px 0;
+  width: 100%;
 }
 
 input {
   height: 32px;
-  width: 60%;
+  width: 60%; 
   border-radius: 10px;
-  border-color: #abc;
-  background-color: #abc;
+  border: 2px solid #abc; 
+  background-color: #f0f0f0; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out; 
+  font-size: 16px; 
+  color: #333; 
 }
 
 input:hover {
-  background-color: #fff;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 input::placeholder {
   text-align: center;
-  color: black;
-  font-size: 16px;
+  color: #aaa; 
 }
 
 h2 {
@@ -52,7 +57,7 @@ p {
 }
 
 .content {
-  margin: 40px 400px 0px 400px;
+  margin: 40px 200px 0px 200px;
 }
 
 .separator {
@@ -70,7 +75,7 @@ header {
 }
 
 nav {
-  padding: 10px 400px;
+  padding: 10px 200px;
 }
 
 /* MovieStart */
@@ -83,7 +88,6 @@ nav {
 
 .movie-item {
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .movie-item img {
@@ -218,4 +222,9 @@ nav {
 div.reviews {
   display: flex;
   margin: 0 0 20px 0;
+}
+
+.random-movie {
+  display: flex;
+  margin: 0 200px;
 }

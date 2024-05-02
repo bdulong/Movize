@@ -16,6 +16,6 @@ npm start
 5. Ouvrez votre navigateur Web et accédez à l'URL suivante :
 http://localhost:3000
 
-## Utilisation de React Router
+#### Utilisation de React Router
 
 Movize utilise React Router pour la navigation entre les différentes pages de l'application. Les routes sont configurées dans le composant `App.js` et permettent aux utilisateurs de naviguer de manière fluide entre la page d'accueil, la page de recherche et les détails des films.

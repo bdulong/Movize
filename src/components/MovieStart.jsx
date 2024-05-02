@@ -117,10 +117,13 @@ const MovieStart = () => {
               <h4>Notre sélection de la soirée</h4>
               <div className="separator"></div>
               <div className="random-movie">
-                <Link to={`/movie/${randomMovie.id}`}>
-                  {randomMovie.poster_path && (<img src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`} alt={`Affiche de ${randomMovie.title}`} />)}
+                <Link className='random-picture' to={`/movie/${randomMovie.id}`}>
+                  {randomMovie.poster_path && (<img className='random-picture' src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`} alt={`Affiche de ${randomMovie.title}`} />)}
                 </Link>
+                <div className='random-content'>
+                  <h1>{randomMovie.title}</h1>
                   <p>{randomMovie.overview}</p>
+                </div>
               </div>
             </div>
           )}

@@ -84,6 +84,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  margin-bottom: 60px;
 }
 
 .movie-item {
@@ -226,5 +227,21 @@ div.reviews {
 
 .random-movie {
   display: flex;
-  margin: 0 200px;
+  align-items: center;
+  margin: 0 0 60px 0;
+}
+
+.random-picture {
+  width: 250px;
+  height: 375px;
+  margin: 0 20px 0 0;
+}
+
+.random-content p {
+  text-align: center;
+}
+
+.random-content h1 {
+  text-align: center;
+  margin-bottom: 10px;
 }

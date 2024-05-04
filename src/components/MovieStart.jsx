@@ -50,7 +50,10 @@ const MovieStart = () => {
     fetchData();
   }, []);
 
+  //Searchbar
   useEffect(() => {
+    let timeoutId;
+
     const searchMovies = async () => {
       if (searchQuery.trim() === '') {
         setSearchResults([]);
@@ -67,7 +70,17 @@ const MovieStart = () => {
       }
     };
 
-    searchMovies();
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(searchMovies, 300);
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [searchQuery]);
 
   const handleSearchChange = (event) => {

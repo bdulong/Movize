@@ -22,17 +22,13 @@ const MovieStart = () => {
         const popularResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr`);
         const popularData = await popularResponse.json();
         let popularMovies = popularData.results;
-
-        // Limiter films populaires à 10
-        popularMovies = popularMovies.slice(0, 10);
+        popularMovies.splice(10); // Limiter films populaires à 10
 
         // Récupérer films à venir
         const upcomingResponse = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=fr`);
         const upcomingData = await upcomingResponse.json();
         let upcomingMovies = upcomingData.results;
-
-        // Limiter films à venir à 10
-        upcomingMovies = upcomingMovies.slice(0, 10);
+        upcomingMovies.splice(10); // Limiter films à venir à 10
 
         // Récupérer un film aléatoire
         const randomResponse = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr`);

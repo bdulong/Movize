@@ -138,7 +138,7 @@ const MovieStart = () => {
                   {hoveredMovie && hoveredMovie.id === movie.id && (
                     <div className="movie-info">
                       <h2>{movie.title}</h2>
-                      <p>{movie.overview}</p>
+                      <p>{movie.overview.length > 300 ? movie.overview.substring(0, 300) + '...' : movie.overview}</p>
                     </div>
                   )}
                 </div>
@@ -172,7 +172,7 @@ const MovieStart = () => {
                   {hoveredMovie && hoveredMovie.id === movie.id && (
                     <div className="movie-info">
                       <h2>{movie.title}</h2>
-                      <p>{movie.overview}</p>
+                      <p>{movie.overview.length > 300 ? movie.overview.substring(0, 300) + '...' : movie.overview}</p>
                     </div>
                   )}
                 </div>

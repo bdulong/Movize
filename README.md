@@ -4,6 +4,9 @@ Movize est un projet d'encyclopédie de films développé en React utilisant l'A
 
 Movize utilise React Router pour la navigation entre les différentes pages de l'application. Les routes sont configurées dans le composant `App.jsx` et permettent aux utilisateurs de naviguer de manière fluide entre la page d'accueil et les détails des films.
 
+## Lien Netlify
+https://movizze.netlify.app/
+
 ## Installation
 
 Pour installer et exécuter Movize localement sur votre machine, suivez ces étapes :
